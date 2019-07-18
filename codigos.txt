@@ -1,0 +1,23 @@
+$(".accordion-item").eq(2).find('.accordion-content > table > tbody > tr').length
+$(".accordion-item").eq(2).find('.accordion-content > table > tbody > tr').eq(0).children('td').eq(2).children('.normal').text().trim()
+
+
+
+//	Pegar o valor TR da primeira TABLE
+$('table').eq(1).children('tbody').children('tr').eq(3).text().trim()
+//	Pegar o valor TR da primeira TABLE valor de left
+$('table').eq(1).children('tbody').children('tr').eq(5).find('td[align="left"]').text().trim()
+
+
+
+// Pegando se tem click
+$('table').eq(1).children('tbody').children('tr').eq(6).find('td[align="left"]').find('.normal').find('a[onclick="DisableHide()"]').length
+// Pegar somente o valor sem click
+$('table').eq(1).children('tbody').children('tr').eq(6).find('td[align="left"]').find('.normal > .normal').text().trim()
+// Pegar somente o valor com click com contagem sobre quantos clicks tem na TR
+$('table').eq(1).children('tbody').children('tr').eq(6).find('td[align="left"]').find('.normal > div').eq(0).text().trim()
+
+// Saber se a primeira table com tem uma tr com table
+$('table').eq(1).children('tbody').children('tr').eq(5).find('td[align="left"]').find('table').length
+// Pegando valores do table dentro da table
+$('table').eq(1).children('tbody').children('tr').eq(5).find('td[align="left"]').find('table > tbody > tr').eq(1).find('td').eq(0).text().trim()

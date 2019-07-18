@@ -1,0 +1,35 @@
+Nº do Pedido			=>		Somente numero de pedido
+Publicações				=>		RPI
+Publicações				=>		Data RPI
+Publicações				=>		Despacho
+Publicações				=>		Img
+Publicações				=>		Complemento do Despacho
+
+Prioridade Unionista	=>		Escrita exatamente prioridade
+Nº do Pedido			=>		Somente numero de pedido
+Prioridade Unionista	=>		País:
+Prioridade Unionista	=>		Número:
+Prioridade Unionista	=>		Data:
+
+PATENTE					=>		Escrita exatamente PATENTE
+Nº do Pedido			=>		Somente numero de pedido
+/
+Primeira TABLE			=>		Nome do Titular:
+Primeira TABLE			=>		Título:
+Primeira TABLE			=>		Nome do Procurador:
+Primeira TABLE			=>		Número Original
+/
+/
+Primeira TABLE			=>		Data do Depósito:
+Primeira TABLE			=>		W.O. Número:
+Primeira TABLE			=>		W.O. Data:
+Primeira TABLE			=>		Início da Fase Nacional:
+Primeira TABLE			=>		PCT	Número:
+Primeira TABLE			=>		PCT Data:
+Primeira TABLE			=>		Nº do Pedido Anterior:
+Primeira TABLE			=>		Resumo:
+Primeira TABLE			=>		Nome do Depositante:
+Primeira TABLE			=>		Nome do Inventor:
+/
+Primeira TABLE			=>		Classificação IPC:
+Primeira TABLE			=>		Data da Publicação:
