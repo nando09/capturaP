@@ -338,67 +338,77 @@
 		.fontgeral {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none}
 		.titulos {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none; font-weight: bolder; text-transform: none}
 		.box { font-family: Arial, Helvetica, sans-serif; font-size: 10px; height: auto; width: 613px}
+		.uppercase{ text-transform: uppercase; }
 	</style>
 </head>
 	<body bgColor="#ffffff" leftMargin=0 text="#000000" topMargin=0  id="body-primary">
 		<div id="retorno">
 			<!-- Primeira Linha -->
-			<p class="nroProcesso"></p>
+			<span class="uppercase">nroProcesso: </span><p class="nroProcesso"></p>
 			<br><br><br>
-			<p class="rpi"></p>
-			<p class="dataRpi"></p>
-			<p class="despacho"></p>
-			<p class="img"></p>
-			<p class="complemento"></p>
+			<span class="uppercase">rpi: </span><p class="rpi"></p>
+			<br>
+			<span class="uppercase">dataRpi: </span><p class="dataRpi"></p>
+			<br>
+			<span class="uppercase">despacho: </span><p class="despacho"></p>
+			<br>
+			<span class="uppercase">img: </span><p class="img"></p>
+			<br>
+			<span class="uppercase">complemento: </span><p class="complemento"></p>
 			<br><br><br>
 
 			<!-- Segunda Linha -->
-			<p class="prioridade"></p>
-			<p class="prioridadePais"></p>
-			<p class="prioridadeNumero"></p>
-			<p class="prioridadeData"></p>
+			<span class="uppercase">prioridade: </span><p class="prioridade"></p>
+			<br>
+			<span class="uppercase">prioridadePais: </span><p class="prioridadePais"></p>
+			<br>
+			<span class="uppercase">prioridadeNumero: </span><p class="prioridadeNumero"></p>
+			<br>
+			<span class="uppercase">prioridadeData: </span><p class="prioridadeData"></p>
 			<br><br><br>
 
 			<!-- Terceira Linha -->
-			<p class="nada1"></p>
+			<span class="uppercase">nada1: </span><p class="nada1"></p>
 			<br>
-			<p class="titular"></p>
+			<span class="uppercase">titular: </span><p class="titular"></p>
 			<br>
-			<p class="titulo"></p>
+			<span class="uppercase">titulo: </span><p class="titulo"></p>
 			<br>
-			<p class="procurador"></p>
+			<span class="uppercase">procurador: </span><p class="procurador"></p>
 			<br>
-			<p class="numeroOriginal"></p>
+			<span class="uppercase">numeroOriginal: </span><p class="numeroOriginal"></p>
 			<br>
-			<p class="nada2"></p>
+			<span class="uppercase">nada2: </span><p class="nada2"></p>
 			<br>
-			<p class="nada3"></p>
+			<span class="uppercase">nada3: </span><p class="nada3"></p>
 			<br>
-			<p class="dataDeposito"></p>
+			<span class="uppercase">dataDeposito: </span><p class="dataDeposito"></p>
 			<br>
-			<p class="WONumero"></p>
+			<span class="uppercase">WONumero: </span><p class="WONumero"></p>
 			<br>
-			<p class="WOData"></p>
+			<span class="uppercase">WOData: </span><p class="WOData"></p>
 			<br>
-			<p class="faseNacional"></p>
+			<span class="uppercase">faseNacional: </span><p class="faseNacional"></p>
 			<br>
-			<p class="PCTNumero"></p>
+			<span class="uppercase">PCTNumero: </span><p class="PCTNumero"></p>
 			<br>
-			<p class="PCTData"></p>
+			<span class="uppercase">PCTData: </span><p class="PCTData"></p>
 			<br>
-			<p class="pedidoAnterior"></p>
+			<span class="uppercase">pedidoAnterior: </span><p class="pedidoAnterior"></p>
 			<br>
-			<p class="resumo"></p>
+			<span class="uppercase">resumo: </span><p class="resumo"></p>
 			<br>
-			<p class="nomeDepositante"></p>
+			<span class="uppercase">nomeDepositante: </span><p class="nomeDepositante"></p>
 			<br>
-			<p class="nomeInventor"></p>
+			<span class="uppercase">nomeInventor: </span><p class="nomeInventor"></p>
 			<br>
-			<p class="nada5"></p>
+			<span class="uppercase">nada5: </span><p class="nada5"></p>
 			<br>
-			<p class="classificacaoIPC"></p>
+			<span class="uppercase">classificacaoIPC: </span><p class="classificacaoIPC"></p>
 			<br>
-			<p class="dataPublicacao"></p>
+			<span class="uppercase">dataPublicacao: </span><p class="dataPublicacao"></p>
+			<br>
+			<span class="uppercase">dataConcessao: </span><p class="dataConcessao"></p>
 
 		</div>
 
@@ -416,6 +426,8 @@
 						$('#body-primary').append("<div id='preenchimento'>" + dados + "</div>");
 						lineOne();
 						lineTwo();
+						adicionarNoArquivo();
+						// limparTudo();
 
 						// voltarSql();
 						// setTimeout(function(){ voltarSql(); }, 3000);
@@ -461,11 +473,23 @@
 				$('#retorno .complemento').text($('#retorno .complemento').text().trim() + "*&&&*" + complemento);
 
 			}
+
+			rpi					=		$("#retorno .rpi").text().substring(5, $("#retorno .rpi").text().length);
+			data				=		$("#retorno .dataRpi").text().substring(5, $("#retorno .dataRpi").text().length);
+			despacho			=		$("#retorno .despacho").text().substring(5, $("#retorno .despacho").text().length);
+			img					=		$("#retorno .img").text().substring(5, $("#retorno .img").text().length);
+			complemento			=		$("#retorno .complemento").text().substring(5, $("#retorno .complemento").text().length);
+
+			$('#retorno .rpi').text(rpi);
+			$('#retorno .dataRpi').text(data);
+			$('#retorno .despacho').text(despacho);
+			$('#retorno .img').text(img);
+			$('#retorno .complemento').text(complemento);
 		}
 
 		function lineTwo(){
 			var qntTd = $('table').eq(1).children('tbody').children('tr').length;
-			var nro = $('table').eq(1).children('tbody').children('tr').eq(1).find('td[align="left"]').text().trim();
+			// var nro = $('table').eq(1).children('tbody').children('tr').eq(1).find('td[align="left"]').text().trim();
 			var valor;
 			var marcador;
 			var pctNumero;
@@ -482,6 +506,11 @@
 
 					$("#retorno .nroProcesso").text(marcador);
 					$("#retorno .pedidoAnterior").text(valor);
+
+				}else if(tr == 'Número Original:'){
+
+					$("#retorno .numeroOriginal").text(valor);
+
 				}else if(tr == 'Nº do Pedido:'){
 
 					$("#retorno .nroProcesso").text(valor);
@@ -496,11 +525,11 @@
 
 				}else if(tr == 'Data da Concessão:'){
 
-					$("#retorno .dataPublicacao").text(valor);
+					$("#retorno .dataConcessao").text(valor);
 
 				}else if(tr == 'Prioridade Unionista:'){
 
-					$("#retorno .dataPublicacao").text(valor);
+					prioridade(i);
 
 				}else if(tr == 'Classificação IPC:'){
 
@@ -517,7 +546,7 @@
 
 				}else if(tr == 'Nome do Depositante:'){
 
-					$("#retorno .titulo").text(valor);
+					$("#retorno .nomeDepositante").text(valor);
 
 				}else if(tr == 'Nome do Inventor:'){
 
@@ -534,12 +563,22 @@
 				}else if(tr == 'PCT'){
 
 					pctNumero 	=	$('table').eq(1).children('tbody').children('tr').eq(i).find('td[align="left"]').children('.normal').eq(1).text().trim();
-					pctData 	=	$('table').eq(1).children('tbody').children('tr').eq(i).find('td[align="left"]').children('.normal').eq(3).text().trim();
-					$("#retorno .titulo").text(valor);
+					pctData 	=	$('table').eq(1).children('tbody').children('tr').eq(i).find('td[align="left"]').children('.normal').eq(2).text().trim();
+
+					$("#retorno .PCTNumero").text(pctNumero);
+					$("#retorno .PCTData").text(pctData);
 
 				}else if(tr == 'W.O.'){
 
-				}else if(tr == 'xxxxxxxxxxxx'){
+					WONumero 	=	$('table').eq(1).children('tbody').children('tr').eq(i).find('td[align="left"]').children('.normal').eq(1).text().trim();
+					WOData 	=	$('table').eq(1).children('tbody').children('tr').eq(i).find('td[align="left"]').children('.normal').eq(2).text().trim();
+
+					$("#retorno .WONumero").text(WONumero);
+					$("#retorno .WOData").text(WOData);
+
+				}else if(tr == 'Nome do Titular:'){
+
+					$("#retorno .titular").text(valor);
 
 				}else if(tr == 'xxxxxxxxxxxx'){
 
@@ -553,48 +592,46 @@
 
 				}
 			}
-
-
-
 		}
 
 		function adicionarNoArquivo(){
 			var posts = {
 				// Primeira Linha
-				nro_processo		:	$("#retorno .nro_processo").text(),
-				rpi					:	$("#retorno .rpi").text(),
-				dataRpi				:	$("#retorno .dataRpi").text(),
-				despacho			:	$("#retorno .despacho").text(),
-				img					:	$("#retorno .img").text(),
-				complemento			:	$("#retorno .complemento").text(),
+				nroProcesso			:		$("#retorno .nroProcesso").text(),
+				rpi					:		$("#retorno .rpi").text(),
+				dataRpi				:		$("#retorno .dataRpi").text(),
+				despacho			:		$("#retorno .despacho").text(),
+				img					:		$("#retorno .img").text(),
+				complemento			:		$("#retorno .complemento").text(),
 
-				// Segunda Linha
-				prioridade			:	$("#retorno .prioridade").text(),
-				prioridadePais		:	$("#retorno .prioridadePais").text(),
-				prioridadeNumero	:	$("#retorno .prioridadeNumero").text(),
-				prioridadeData		:	$("#retorno .prioridadeData").text(),
+				// Primeira Linha
+				prioridade			:		$("#retorno .prioridade").text(),
+				prioridadePais		:		$("#retorno .prioridadePais").text(),
+				prioridadeNumero	:		$("#retorno .prioridadeNumero").text(),
+				prioridadeData		:		$("#retorno .prioridadeData").text(),
 
 				// Terceira Linha
-				nada1				:	$("#retorno .nada1").text(), 
-				titular				:	$("#retorno .titular").text(),
-				titulo				:	$("#retorno .titulo").text(),
-				procurador			:	$("#retorno .procurador").text(),
-				numeroOriginal		:	$("#retorno .numeroOriginal").text(),
-				nada2				:	$("#retorno .nada2").text(), 
-				nada3				:	$("#retorno .nada3").text(),
-				dataDeposito		:	$("#retorno .dataDeposito").text(),
-				WONumero			:	$("#retorno .WONumero").text(),
-				WOData				:	$("#retorno .WOData").text(),
-				faseNacional		:	$("#retorno .faseNacional").text(),
-				PCTNumero			:	$("#retorno .PCTNumero").text(),
-				PCTData				:	$("#retorno .PCTData").text(),
-				pedidoAnterior				:	$("#retorno .pedidoAnterior").text(),
-				resumo				:	$("#retorno .resumo").text(),
-				nomeDepositante		:	$("#retorno .nomeDepositante").text(),
-				nomeInventor		:	$("#retorno .nomeInventor").text(),
-				nada5				:	$("#retorno .nada5").text(),
-				classificacaoIPC	:	$("#retorno .classificacaoIPC").text(),
-				dataPublicacao		:	$("#retorno .dataPublicacao").text()
+				nada1				:		$("#retorno .nada1").text(),
+				titular				:		$("#retorno .titular").text(),
+				titulo				:		$("#retorno .titulo").text(),
+				procurador			:		$("#retorno .procurador").text(),
+				numeroOriginal		:		$("#retorno .numeroOriginal").text(),
+				nada2				:		$("#retorno .nada2").text(),
+				nada3				:		$("#retorno .nada3").text(),
+				dataDeposito		:		$("#retorno .dataDeposito").text(),
+				WONumero			:		$("#retorno .WONumero").text(),
+				WOData				:		$("#retorno .WOData").text(),
+				faseNacional		:		$("#retorno .faseNacional").text(),
+				PCTNumero			:		$("#retorno .PCTNumero").text(),
+				PCTData				:		$("#retorno .PCTData").text(),
+				pedidoAnterior		:		$("#retorno .pedidoAnterior").text(),
+				resumo				:		$("#retorno .resumo").text(),
+				nomeDepositante		:		$("#retorno .nomeDepositante").text(),
+				nomeInventor		:		$("#retorno .nomeInventor").text(),
+				nada5				:		$("#retorno .nada5").text(),
+				classificacaoIPC	:		$("#retorno .classificacaoIPC").text(),
+				dataPublicacao		:		$("#retorno .dataPublicacao").text(),
+				dataConcessao		:		$("#retorno .dataConcessao").text()
 			}
 
 			$.ajax({
@@ -603,9 +640,9 @@
 				type: 'post',
 				data: posts,
 				success: function(dados) {
-					limparTudo();
-					$("#body-primary #preenchimento").remove();
-					setTimeout(function(){ voltarSql(); }, 1000);
+					// limparTudo();
+					// $("#body-primary #preenchimento").remove();
+					// setTimeout(function(){ voltarSql(); }, 1000);
 
 					// console.log('Terminou!');
 				},
@@ -626,18 +663,20 @@
 
 		function limparTudo(){
 			// Primeira Linha
-			$("#retorno .nro_processo").text('');
+			$("#retorno .nroProcesso").text('');
 			$("#retorno .rpi").text('');
 			$("#retorno .dataRpi").text('');
 			$("#retorno .despacho").text('');
 			$("#retorno .img").text('');
 			$("#retorno .complemento").text('');
 
+
 			// Segunda Linha
 			$("#retorno .prioridade").text('');
 			$("#retorno .prioridadePais").text('');
 			$("#retorno .prioridadeNumero").text('');
 			$("#retorno .prioridadeData").text('');
+
 
 			// Terceira Linha
 			$("#retorno .nada1").text('');
@@ -660,6 +699,28 @@
 			$("#retorno .nada5").text('');
 			$("#retorno .classificacaoIPC").text('');
 			$("#retorno .dataPublicacao").text('');
+			$("#retorno .dataConcessao").text('');
+		}
+
+		function prioridade(num){
+			var qntTd = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table').length;
+			var prioridadePais;
+			var prioridadeNumero;
+			var prioridadeData;
+
+			for (var i = 1; i <= qntTd; i++) {
+				prioridadePais = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table > tbody > tr').eq(i).find('td').eq(0).text().trim();
+				prioridadeNumero = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table > tbody > tr').eq(i).find('td').eq(1).text().trim();
+				prioridadeData = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table > tbody > tr').eq(i).find('td').eq(2).text().trim();
+
+				// console.log(prioridadePais);
+				// console.log(prioridadeNumero);
+				// console.log(prioridadeData);
+
+				$("#retorno .prioridadePais").text(prioridadePais);
+				$("#retorno .prioridadeNumero").text(prioridadeNumero);
+				$("#retorno .prioridadeData").text(prioridadeData);
+			}
 		}
 
 		voltarSql();

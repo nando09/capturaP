@@ -1,7 +1,6 @@
 <?php
-
 	// Primeira Linha
-	$nro_processo			=		$_POST['nro_processo'];
+	$nroProcesso			=		$_POST['nroProcesso'];
 	$rpi					=		$_POST['rpi'];
 	$dataRpi				=		$_POST['dataRpi'];
 	$despacho				=		$_POST['despacho'];
@@ -35,34 +34,31 @@
 	$nada5					=		$_POST['nada5'];
 	$classificacaoIPC		=		$_POST['classificacaoIPC'];
 	$dataPublicacao			=		$_POST['dataPublicacao'];
+	$dataConcessao			=		$_POST['dataConcessao'];
+
+	// echo "<pre>";
+	// print_r($_POST);
+	// echo "</pre>";
+	// exit();
 
 
-	$texto = $situacao_marca . '|' . $nro_processo . '|' . '|' . $titular . '|' . $marcas  . '|' . $procurador . '|' . $priori_codigo . '|' . $priori_data . '|' . $priori_pais . '|' . $data_deposito . '|' . $data_concessao . '|' . $situacao . '|' . $data_vigencia . '|' . $apresentacao . '|' . '|' . $classes_eSub . '|' . $natureza . '|' . $class_int . '|' . $apostila . '|' . $espec_classe . '|' . $nice_codigo;
+	$rpis = array();
 
-	gravar($texto);
-
-	$despachos = array();
-
-	$rpis					= explode("*&&&*", $rpi);
-	$data_rpis				= explode("*&&&*", $data_rpi);
-	$despachos				= explode("*&&&*", $despacho);
-	$imgs					= explode("*&&&*", $img);
-	$complemento_despachos	= explode("*&&&*", $complemento_despacho);
+	$rpis					=		explode("*&&&*", $rpi);
+	$dataRpis				=		explode("*&&&*", $dataRpi);
+	$despachos				=		explode("*&&&*", $despacho);
+	$imgs					=		explode("*&&&*", $img);
+	$complementos			=		explode("*&&&*", $complemento);
 
 
 	foreach ($rpis as $key => $value) {
-		$texto = $nro_processo;
+		$texto = $nroProcesso;
 		$texto .= "|" . $value;
-		$texto .= "|" . $data_rpis[$key];
+		$texto .= "|" . $dataRpis[$key];
 		$texto .= "|" . $despachos[$key];
 		$texto .= "|" . ($imgs[$key] == '-')? '|' : $imgs[$key];
-		// $novafrase = $complemento_despachos[$key];
 
-		$primeiro = array(" Petição (tipo):", "Requerente(es):", "Procurador:", "Detalhes do despacho:", "Cessionário:", "Titular:", "Titular(es):", "Requerente:", "Sobrestadores:");
-		$segundo = array("  Petição (tipo):", " Requerente(es):", " Procurador:", " Detalhes do despacho:", " Cessionário:", " Titular:", " Titular(es):", ' Requerente:', "  Sobrestadores:");
-		$novafrase = str_replace($primeiro, $segundo, $complemento_despachos[$key]);
-
-		$texto .= "|" . $novafrase;
+		$texto .= "|" . $complementos[$key];
 
 		gravar($texto);
 	}
