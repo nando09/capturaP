@@ -1,6 +1,6 @@
 <?php
 	// Primeira Linha
-	$nroProcesso			=		$_POST['nroProcesso'];
+	$nroProcesso			=		substr($_POST['nroProcesso'], 0, 19);
 	$rpi					=		$_POST['rpi'];
 	$dataRpi				=		$_POST['dataRpi'];
 	$despacho				=		$_POST['despacho'];
@@ -36,13 +36,13 @@
 	$dataPublicacao			=		$_POST['dataPublicacao'];
 	$dataConcessao			=		$_POST['dataConcessao'];
 
+	$classificacaoIPC		=		str_replace(';', ';,', $classificacaoIPC);
+
 	// echo "<pre>";
 	// print_r($_POST);
 	// echo "</pre>";
 	// exit();
 
-
-	$rpis = array();
 
 	$rpis					=		explode("*&&&*", $rpi);
 	$dataRpis				=		explode("*&&&*", $dataRpi);
@@ -62,6 +62,25 @@
 
 		gravar($texto);
 	}
+
+	$prioridade				=		'PRIORIDADE';
+	$prioridadePais			=		explode("*&&&*", $prioridadePais);
+	$prioridadeNumero		=		explode("*&&&*", $prioridadeNumero);
+	$prioridadeData			=		explode("*&&&*", $prioridadeData);
+
+	foreach ($prioridadePais as $key => $value) {
+		$texto = $prioridade;
+		$texto .= "|" . $nroProcesso;
+		$texto .= "|" . $value;
+		$texto .= "|" . $prioridadeNumero[$key];
+		$texto .= "|" . $prioridadeData[$key];
+
+		gravar($texto);
+	}
+
+	$texto = 'PATENTE|' . $nroProcesso . "|" . $nada1 . "|" . $titular . "|" . $titulo . "|" . $procurador . "|" . $numeroOriginal . "|" . $nada2 . "|" . $nada3 . "|" . $dataDeposito . "|" . $WONumero . "|" . $WOData . "|" . $faseNacional . "|" . $PCTNumero . "|" . $PCTData . "|" . $pedidoAnterior . "|" . $resumo . "|" . $nomeDepositante . "|" . $nomeInventor . "|" . $nada5 . "|" . $classificacaoIPC . "|" . $dataPublicacao;
+
+	gravar($texto);
 
 	// //Criamos uma função que recebe um texto como parâmetro.
 	function gravar($texto){

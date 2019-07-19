@@ -19,17 +19,24 @@
 	foreach($local as $k=>$linha) {
 		$query = $linha;
 
-		
-//		echo $query;
-		// unset($local[$k]);
+		//	echo $query;
+		//	unset($local[$k]);
 		break;
 	}
 
 	$utf = mb_detect_encoding($query);
 
-	if ($utf != 'UTF-8') {
+	// echo "<pre>";
+	// print_r($utf);
+	// echo "</pre>";
+
+	// if ($utf != 'UTF-8') {
 		$query = utf8_encode($query);
-	}
+	// }
+
+	// echo "<pre>";
+	// print_r($utf);
+	// echo "</pre>";
 
 	// file_put_contents('AcertadosPat.csv', $local);
 	echo json_encode($query);

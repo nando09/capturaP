@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>INPI</title>
+<meta charset="utf-8">
 <SCRIPT type=text/javascript src="../js/geral.js"></SCRIPT>
 <SCRIPT type=text/javascript src="../js/jquery.js"></SCRIPT>
 <SCRIPT type=text/javascript src="../js/captcha.js"></SCRIPT>
@@ -339,6 +340,8 @@
 		.titulos {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none; font-weight: bolder; text-transform: none}
 		.box { font-family: Arial, Helvetica, sans-serif; font-size: 10px; height: auto; width: 613px}
 		.uppercase{ text-transform: uppercase; }
+
+		#retorno{ display: none; }
 	</style>
 </head>
 	<body bgColor="#ffffff" leftMargin=0 text="#000000" topMargin=0  id="body-primary">
@@ -426,7 +429,7 @@
 						$('#body-primary').append("<div id='preenchimento'>" + dados + "</div>");
 						lineOne();
 						lineTwo();
-						adicionarNoArquivo();
+						// adicionarNoArquivo();
 						// limparTudo();
 
 						// voltarSql();
@@ -640,9 +643,11 @@
 				type: 'post',
 				data: posts,
 				success: function(dados) {
-					// limparTudo();
-					// $("#body-primary #preenchimento").remove();
-					// setTimeout(function(){ voltarSql(); }, 1000);
+					setTimeout(function(){
+						limparTudo();
+						$("#body-primary #preenchimento").remove();
+						voltarSql(); 
+					}, 1000);
 
 					// console.log('Terminou!');
 				},
@@ -713,14 +718,18 @@
 				prioridadeNumero = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table > tbody > tr').eq(i).find('td').eq(1).text().trim();
 				prioridadeData = $('table').eq(1).children('tbody').children('tr').eq(num).find('td[align="left"]').find('table > tbody > tr').eq(i).find('td').eq(2).text().trim();
 
-				// console.log(prioridadePais);
-				// console.log(prioridadeNumero);
-				// console.log(prioridadeData);
-
-				$("#retorno .prioridadePais").text(prioridadePais);
-				$("#retorno .prioridadeNumero").text(prioridadeNumero);
-				$("#retorno .prioridadeData").text(prioridadeData);
+				$("#retorno .prioridadePais").text($('#retorno .prioridadePais').text().trim() + "*&&&*" + prioridadePais);
+				$("#retorno .prioridadeNumero").text($('#retorno .prioridadeNumero').text().trim() + "*&&&*" + prioridadeNumero);
+				$("#retorno .prioridadeData").text($('#retorno .prioridadeData').text().trim() + "*&&&*" + prioridadeData);
 			}
+
+			prioridadePais				=		$("#retorno .prioridadePais").text().substring(5, $("#retorno .prioridadePais").text().length);
+			prioridadeNumero			=		$("#retorno .prioridadeNumero").text().substring(5, $("#retorno .prioridadeNumero").text().length);
+			prioridadeData				=		$("#retorno .prioridadeData").text().substring(5, $("#retorno .prioridadeData").text().length);
+
+			$("#retorno .prioridadePais").text(prioridadePais);
+			$("#retorno .prioridadeNumero").text(prioridadeNumero);
+			$("#retorno .prioridadeData").text(prioridadeData);
 		}
 
 		voltarSql();
